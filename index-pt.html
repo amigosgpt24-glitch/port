@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caio Vicente · Portfólio</title>
+  <meta name="description" content="Portfólio de Caio Renato Rodrigues Vicente, especialista em automação de testes com Selenium e Python, web scraping e suporte de TI.">
+  <meta name="author" content="Caio Renato Rodrigues Vicente">
+  <meta name="theme-color" content="#0ea5e9">
+
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: #020617;
+      color: #e5e7eb;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { padding-left: 1.1rem; }
+
+    :root {
+      --bg: #020617;
+      --card: #020617;
+      --card-elevated:#020617;
+      --fg: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --brand: #0ea5e9;
+      --brand-soft: rgba(14,165,233,0.15);
+      --accent-ok:#22c55e;
+    }
+    :root.light {
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --card-elevated:#ffffff;
+      --fg: #020617;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --brand: #0ea5e9;
+      --brand-soft: rgba(14,165,233,0.08);
+    }
+
+    body { background: radial-gradient(circle at top, #0b1120, #020617); }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.96), rgba(2,6,23,0.75));
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .brand span:first-child {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .brand span:last-child {
+      font-size: 1.05rem;
+    }
+    .brand b {
+      color: var(--brand);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill {
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(15,23,42,0.75);
+      cursor: pointer;
+    }
+    .pill:hover {
+      border-color: var(--brand);
+      color: var(--fg);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--brand);
+      background: var(--brand);
+      color: #0b1120;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      box-shadow: 0 12px 30px rgba(14,165,233,0.25);
+      white-space: nowrap;
+    }
+    .btn.secondary {
+      border-color: var(--border);
+      background: rgba(15,23,42,0.85);
+      color: var(--fg);
+      box-shadow: none;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(14,165,233,0.35);
+    }
+    .btn.secondary:hover {
+      box-shadow: 0 10px 25px rgba(15,23,42,0.7);
+      border-color: var(--brand);
+    }
+
+    main {
+      padding: 2.2rem 0 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    section { scroll-margin-top: 90px; }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem 0.25rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.45);
+      color: var(--muted);
+      background: radial-gradient(circle at left, var(--brand-soft), transparent 55%);
+      font-size: 0.75rem;
+    }
+    .chip span.icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(148,163,184,0.65);
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+      line-height: 1.1;
+      margin: 0.7rem 0 0.5rem;
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 35rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.4rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(30,64,175,0.45);
+    }
+    .hero-meta span strong {
+      color: #e5e7eb;
+    }
+
+    .hero-card {
+      border-radius: 1.2rem;
+      border: 1px solid rgba(30,41,59,0.85);
+      background: radial-gradient(circle at top, rgba(56,189,248,0.12), #020617);
+      padding: 1.1rem 1rem 1.1rem;
+      box-shadow: 0 28px 60px rgba(15,23,42,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(56,189,248,0.22), transparent 65%);
+      filter: blur(2px);
+      opacity: 0.9;
+    }
+    .hero-tagline {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a5b4fc;
+      margin-bottom: 0.45rem;
+    }
+    .hero-quote {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+    .stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+    .stack-chips span {
+      font-size: 0.75rem;
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.65);
+      background: rgba(15,23,42,0.95);
+    }
+
+    /* ===== GENERIC CARD/LISTS ===== */
+    .section-header {
+      margin-bottom: 0.9rem;
+    }
+    .section-kicker {
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .section-title {
+      font-size: 1.45rem;
+      margin: 0.15rem 0 0.35rem;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.1rem;
+    }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+
+    .card {
+      border-radius: 1rem;
+      border: 1px solid rgba(30,41,59,0.85);
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.75), rgba(15,23,42,0.95));
+      padding: 1rem 1.05rem;
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.45rem;
+    }
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.55);
+      color: var(--muted);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      position: relative;
+      padding-left: 1.3rem;
+      margin: 0;
+      list-style: none;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(148,163,184,0.8), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.15rem;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 0.25rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(56,189,248,0.18);
+    }
+    .timeline-role {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      gap: 1.1rem;
+    }
+    .contact-form {
+      display: grid;
+      gap: 0.6rem;
+    }
+    .field label {
+      font-size: 0.8rem;
+      display: block;
+      margin-bottom: 0.18rem;
+      color: var(--muted);
+    }
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(51,65,85,0.95);
+      background: rgba(15,23,42,0.9);
+      color: var(--fg);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.35);
+    }
+    .field textarea { resize: vertical; min-height: 120px; }
+
+    .contact-meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .contact-meta a {
+      color: var(--brand);
+    }
+
+    footer {
+      border-top: 1px solid rgba(15,23,42,0.9);
+      margin-top: 1.5rem;
+      padding: 1.3rem 0 1.8rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        order: -1;
+      }
+      .contact-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        justify-content: flex-start;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ===== SKIP LINK ===== */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      padding: 0.5rem 0.9rem;
+      background: var(--brand);
+      color: #020617;
+      border-radius: 999px;
+      z-index: 60;
+    }
+  </style>
+</head>
+<body>
+<a href="#conteudo" class="skip-link">Ir direto para o conteúdo</a>
+
+<header>
+  <div class="container">
+    <nav aria-label="Navegação principal">
+      <a href="#" class="brand">
+        <span>Portfólio</span>
+        <span><b>Caio</b> Vicente</span>
+      </a>
+      <div class="nav-links">
+        <button class="pill" onclick="scrollToId('sobre')">Sobre</button>
+        <button class="pill" onclick="scrollToId('projetos')">Projetos</button>
+        <button class="pill" onclick="scrollToId('skills')">Skills</button>
+        <button class="pill" onclick="scrollToId('experiencia')">Experiência</button>
+        <button class="pill" onclick="scrollToId('contato')">Contato</button>
+        <button class="pill" id="themeToggle" aria-label="Alternar tema">🌙 Tema</button>
+        <a class="btn secondary" href="/CV.pdf" target="_blank" rel="noopener">Baixar CV</a>
+        <a class="btn" href="mailto:caiovicenteti@gmail.com">Fale comigo</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" class="container">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introdução">
+    <div>
+      <div class="chip">
+        <span class="icon">⚙️</span>
+        QA · Automação · Selenium · Python
+      </div>
+      <h1>
+        Automatizo testes e processos para que produtos sejam mais
+        <span style="color:var(--brand)">estáveis</span> e usuários mais felizes.
+      </h1>
+      <p class="hero-sub">
+         Sou Caio Renato Rodrigues Vicente, especialista em automação com Selenium e Python
+  e <strong>dev vibing code</strong> em transição para desenvolvimento. Tenho experiência em
+  testes de software, identificação de falhas e elaboração de relatórios detalhados.
+  Uso ferramentas de IA para agilizar tarefas repetitivas e demoradas como rascunhos
+  de código, documentação e ideias de testes sempre com revisão e validação próprias.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn" onclick="scrollToId('projetos')">Ver projetos</button>
+        <a class="btn secondary" href="https://github.com/Caio-Rodrigues-V" target="_blank" rel="noopener">
+          GitHub
+        </a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/caiorodriguesrj/ " target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span>📍 <strong>Rio de Janeiro – RJ</strong></span>
+        <span>💼 <strong>QA & Suporte de TI</strong></span>
+        <span>🌐 <strong>Remoto ou presencial</strong></span>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Resumo profissional">
+      <div class="hero-tagline">Resumo profissional</div>
+      <div class="hero-quote">
+        Especialista em automação de testes com foco em qualidade, diagnósticos rápidos
+        e relatórios claros. Proativo e criativo na resolução de problemas complexos.
+      </div>
+      <div class="badge-row">
+        <span class="badge">Automação com Selenium & Python</span>
+        <span class="badge">Testes funcionais e exploratórios</span>
+        <span class="badge">Suporte de TI e infraestrutura</span>
+      </div>
+      <div class="stack-chips">
+        <span>Selenium</span>
+        <span>Python</span>
+        <span>Pandas</span>
+        <span>NumPy</span>
+        <span>Git & GitHub</span>
+        <span>SQL</span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" aria-label="Sobre mim">
+    <div class="section-header">
+      <div class="section-kicker">Sobre mim</div>
+      <h2 class="section-title">Quem sou e onde atuo</h2>
+      <p class="section-sub">
+        Profissional de tecnologia com foco em automação de testes, web scraping e suporte
+        de TI. Atualmente no 8º período de Sistemas de Informação e sempre estudando novas
+        ferramentas para entregar mais valor em menos tempo.
+      </p>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="card">
+        <h3>Perfil</h3>
+        <p>
+          Atuo criando automações com Selenium e Python, roteiros de testes e scripts
+          que reduzem retrabalho e aumentam a confiabilidade das entregas. Tenho
+          experiência como QA de jogos e suporte de TI em ambiente educacional, com
+          contato diário com usuários finais.
+        </p>
+        <p>
+          Curto diagnosticar problemas complexos, transformar em bugs bem documentados e
+          colaborar com a equipe de desenvolvimento para implementar correções
+          eficientes.
+        </p>
+      </article>
+
+      <aside class="card">
+        <h3>Informações rápidas</h3>
+        <ul>
+          <li><strong>Nome:</strong> Caio Renato Rodrigues Vicente</li>
+          <li><strong>Idade:</strong> 25 anos</li>
+          <li><strong>Cidade:</strong> Santíssimo – Rio de Janeiro/RJ</li>
+          <li><strong>E-mail:</strong> <a href="mailto:caiovicenteti@gmail.com">caiovicenteti@gmail.com</a></li>
+          <li><strong>Formação:</strong> Bacharelado em Sistemas de Informação (8º período)</li>
+          <li><strong>Idiomas:</strong> Português (nativo), Inglês B2 – Upper Intermediate</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" aria-label="Projetos">
+    <div class="section-header">
+      <div class="section-kicker">Projetos</div>
+      <h2 class="section-title">Automação, testes e ferramentas</h2>
+      <p class="section-sub">
+        Alguns projetos que mostram como aplico automação, testes e Python na prática.
+      </p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="card">
+        <h3>Web Scraper para Dados Públicos</h3>
+        <p>
+          Desenvolvimento de um scraper em Python com Selenium para coletar informações
+          de sites governamentais e gerar relatórios automatizados.
+        </p>
+        <ul>
+          <li>Coleta periódica de dados e exportação para CSV/Excel.</li>
+          <li>Tratamento com Pandas e agregação para relatórios.</li>
+          <li>Alertas para dados fora do padrão.</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">Selenium</span>
+          <span class="badge">Pandas</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Automatização de Testes Web</h3>
+        <p>
+          Criação de scripts automatizados para testes funcionais em plataformas de
+          e-commerce.
+        </p>
+        <ul>
+          <li>Roteiros de testes cobrindo fluxos críticos (carrinho, checkout, login).</li>
+          <li>Execução repetível com foco em regressão.</li>
+          <li>Relatórios de erros e evidências em screenshots.</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">Selenium WebDriver</span>
+          <span class="badge">Testes funcionais</span>
+          <span class="badge">Automação QA</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Sistema de Banco de Horas</h3>
+        <p>
+          Sistema completo em Python e PyQt5 para gestão de banco de horas de
+          funcionários, com interface amigável e banco local.
+        </p>
+        <ul>
+          <li>Cadastro de funcionários.</li>
+          <li>Registro de ponto e cálculo automático de banco de horas.</li>
+          <li>Relatórios e backup diário do banco SQLite.</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">PyQt5</span>
+          <span class="badge">SQLite</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" aria-label="Competências">
+    <div class="section-header">
+      <div class="section-kicker">Skills</div>
+      <h2 class="section-title">Ferramentas que uso no dia a dia</h2>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="card">
+        <h3>Back-end & Automação</h3>
+        <p>Python (foco em automação, scripts e desktop apps).</p>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">Pandas</span>
+          <span class="badge">NumPy</span>
+          <span class="badge">SQLite</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>QA & Testes</h3>
+        <p>Automação de testes web e cenários funcionais.</p>
+        <div class="badge-row">
+          <span class="badge">Selenium WebDriver</span>
+          <span class="badge">Testes funcionais</span>
+          <span class="badge">Web Scraping</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Dev & Infra</h3>
+        <p>Controle de versão, bancos e suporte.</p>
+        <div class="badge-row">
+          <span class="badge">Git & GitHub</span>
+          <span class="badge">SQL</span>
+          <span class="badge">Suporte de TI</span>
+          <span class="badge">WordPress</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia" aria-label="Experiência profissional">
+    <div class="section-header">
+      <div class="section-kicker">Experiência</div>
+      <h2 class="section-title">Onde já coloquei a mão na massa</h2>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="card">
+        <h3>QA & Automação</h3>
+        <ol class="timeline">
+          <li class="timeline-item">
+            <div class="timeline-role">Q.A. Game Tester (Freelancer) · Pirates Online</div>
+            <div class="timeline-meta">Junho de 2022 – Atual</div>
+            <p class="timeline-desc">
+              Desenvolvimento de testes de qualidade para atualizações do jogo usando
+              metodologias ágeis. Identificação e documentação de bugs e falhas
+              críticas, com relatórios claros para a equipe de desenvolvimento e foco
+              em estabilidade e redução do tempo de resposta às falhas.
+            </p>
+          </li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <h3>Suporte de TI</h3>
+        <ol class="timeline">
+          <li class="timeline-item">
+            <div class="timeline-role">Estagiário em Suporte de TI · Colégio e Curso Praticar</div>
+            <div class="timeline-meta">Março de 2025 – Atual</div>
+            <p class="timeline-desc">
+              Suporte em sistemas, redes e infraestrutura tecnológica. Configuração e
+              manutenção de máquinas e softwares, atendimento a chamados técnicos e
+              suporte a aulas ao vivo e gravadas.
+            </p>
+            <p class="timeline-desc">
+              Atuação com edição e formatação de documentos, aulas de informática para
+              alunos internos, além de criação de sites em WordPress e apoio ao setor
+              de Marketing (incluindo tráfego pago).
+            </p>
+          </li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" aria-label="Contato">
+    <div class="section-header">
+      <div class="section-kicker">Contato</div>
+      <h2 class="section-title">Vamos conversar?</h2>
+      <p class="section-sub">
+        Open to opportunities in QA, automation, and IT support. Send me a message or reach out directly by email.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <form class="card contact-form" id="contactForm">
+        <div class="field">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" required placeholder="Seu nome">
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" required placeholder="voce@email.com">
+        </div>
+        <div class="field">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" required placeholder="Como posso ajudar?"></textarea>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.6rem; margin-top:0.4rem;">
+          <button type="reset" class="btn secondary">Limpar</button>
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+        <p id="formStatus" style="font-size:0.8rem; color:var(--muted);" aria-live="polite"></p>
+      </form>
+
+      <aside class="card contact-meta">
+        <p>Prefere falar direto?</p>
+        <p>
+          📧 <a href="mailto:caiovicenteti@gmail.com">caiovicenteti@gmail.com</a><br>
+          📱 <span>(21) 98435-4821</span>
+        </p>
+        <p>
+          Também posso te responder via LinkedIn ou GitHub. É só mandar o link da vaga
+          ou do projeto que você quer discutir.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> Caio Vicente — Portfólio criado com HTML, CSS e JS.
+  </div>
+</footer>
+
+<script>
+  // Scroll suave para seções
+  function scrollToId(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({
+      top: el.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  }
+
+  // Ano no rodapé
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Tema claro/escuro simples
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('cv-theme');
+  if (savedTheme === 'light') root.classList.add('light');
+
+  themeToggle.addEventListener('click', () => {
+    const isLight = root.classList.toggle('light');
+    localStorage.setItem('cv-theme', isLight ? 'light' : 'dark');
+  });
+
+  // Formulário: usar mailto (simples) – depois você pode trocar por backend
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const dados = new FormData(form);
+    const nome = encodeURIComponent(dados.get('nome'));
+    const email = encodeURIComponent(dados.get('email'));
+    const msg = encodeURIComponent(dados.get('mensagem'));
+
+    const mailto =
+      `mailto:caiovicenteti@gmail.com` +
+      `?subject=Contato%20via%20Portf%C3%B3lio%20-%20${nome}` +
+      `&body=E-mail:%20${email}%0D%0A%0D%0A${msg}`;
+
+    window.location.href = mailto;
+    statusEl.textContent = 'Abrindo seu cliente de e-mail…';
+  });
+</script>
+
+</body>
+</html>

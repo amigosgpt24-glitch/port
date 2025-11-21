@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caio Vicente · Choose language</title>
+  <meta name="robots" content="noindex"> <!-- opcional: não indexar essa tela -->
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto;
+      background:#020617;
+      color:#e5e7eb;
+    }
+    .box{
+      padding:1.6rem 2.2rem;
+      border-radius:1.2rem;
+      border:1px solid #1f2937;
+      background:radial-gradient(circle at top,#0b1120,#020617);
+      box-shadow:0 20px 45px rgba(0,0,0,.7);
+      text-align:center;
+      max-width:320px;
+      width:90%;
+    }
+    h1{
+      font-size:1.1rem;
+      margin-bottom:.9rem;
+    }
+    p{
+      font-size:.9rem;
+      margin-bottom:1.1rem;
+      color:#9ca3af;
+    }
+    .buttons{
+      display:flex;
+      gap:.6rem;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    button{
+      padding:.55rem 1.2rem;
+      border-radius:999px;
+      border:1px solid #0ea5e9;
+      background:#0ea5e9;
+      color:#020617;
+      font-size:.9rem;
+      cursor:pointer;
+      min-width:120px;
+    }
+    button.secondary{
+      background:transparent;
+      color:#e5e7eb;
+    }
+    small{
+      display:block;
+      font-size:.7rem;
+      color:#6b7280;
+      margin-top:.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Choose your language</h1>
+    <p>Selecione o idioma que você prefere para navegar no meu portfólio.</p>
+    <div class="buttons">
+      <button onclick="setLang('pt')">Português 🇧🇷</button>
+      <button class="secondary" onclick="setLang('en')">English 🌎</button>
+    </div>
+    <small>You can change language anytime by clearing site data.</small>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'cv-lang';
+
+    // Se já tiver idioma salvo, redireciona direto
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'pt') {
+      window.location.href = '/index-pt.html';
+    } else if (saved === 'en') {
+      window.location.href = '/index-en.html';
+    } else {
+      // Sugestão automática com base no navegador
+      const navLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      if (navLang.startsWith('pt')) {
+        // Se for pt-BR/pt-PT, já sugere PT (mas ainda mostra escolha)
+        // Se quiser redirecionar direto, descomenta a linha abaixo:
+        // setLang('pt');
+      }
+    }
+
+    function setLang(lang){
+      localStorage.setItem(STORAGE_KEY, lang);
+      if (lang === 'pt') {
+        window.location.href = '/index-pt.html';
+      } else {
+        window.location.href = '/index-en.html';
+      }
+    }
+  </script>
+</body>
+</html>
