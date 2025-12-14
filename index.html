@@ -65,13 +65,10 @@
 </head>
 <body>
   <div class="box">
-    <h1>Choose your language</h1>
-    <p>Selecione o idioma que você prefere para navegar no meu portfólio.</p>
+    <h1>Seja bem-vindo ao meu portifólio</h1>
     <div class="buttons">
-      <button onclick="setLang('pt')">Português 🇧🇷</button>
-      <button class="secondary" onclick="setLang('en')">English 🌎</button>
+      <button onclick="setLang('pt')">Entrar</button>
     </div>
-    <small>You can change language anytime by clearing site data.</small>
   </div>
 
   <script>
@@ -93,14 +90,6 @@
       }
     }
 
-    function setLang(lang){
-      localStorage.setItem(STORAGE_KEY, lang);
-      if (lang === 'pt') {
-        window.location.href = '/index-pt.html';
-      } else {
-        window.location.href = '/index-en.html';
-      }
-    }
   </script>
 </body>
 </html>
